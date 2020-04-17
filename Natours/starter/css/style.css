@@ -24,6 +24,7 @@ body {
     font-size: 16px;
     line-height: 1.7;
     color: #777;
+    background-color: black;
     padding: 30px;
 }
 
@@ -70,6 +71,7 @@ body {
 
 .logo {
     height: 35px;
+    animation: moveInRight 1s ease-out;
 }
 
 .text-box {
@@ -77,7 +79,7 @@ body {
     top: 50%;
     left: 50%;
     /* 
-    again, the top and left props are relative to parent header element.
+    The top and left props are relative to parent header element.
     This will put the left side of the text box in the center, so to
     get the center to the text box to the center of the parent element
     we use transform to move 50% of the elements height to the top and left,
@@ -89,6 +91,12 @@ body {
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /* 
+    sometimes with animations the entire element can shake uncontrollably.
+    It is almost unnoticable sometimes but this is the fix.
+     */
+    backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -97,11 +105,60 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /* 
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+     */
 }
 
 .heading-primary-sub {
     display: block;
     font-size: 20px;
     font-weight: 700;
-    letter-spacing: 15px;
+    letter-spacing: 17.4px;
+
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+/* 
+For browser optmization and performance, the two best props to
+change are the opacity and transform methods.
+ */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px) rotate(-180deg);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px) rotate(180deg);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
