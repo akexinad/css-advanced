@@ -28,6 +28,7 @@ body {
 }
 
 .header {
+    position: relative;
     height: 95vh;
     /* 
     here we have two background images.
@@ -55,4 +56,52 @@ body {
     NOTE: the first coordinate begins in the top left corner.
      */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+    /* 
+    the top and bottom props of this element are relative to its parent element.
+    In this case it is the header element.
+     */
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 
+    again, the top and left props are relative to parent header element.
+    This will put the left side of the text box in the center, so to
+    get the center to the text box to the center of the parent element
+    we use transform to move 50% of the elements height to the top and left,
+    thus positioning the text box in the center.
+     */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    /* display is originally an inline element */
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 15px;
 }
