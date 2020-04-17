@@ -6,3 +6,33 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* The universal selector */
+* {
+    margin: 0;
+    padding: 0;
+    /* 
+    this ensures that the box borders and paddinare are 
+    not added to the total width or height of the box.
+     */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+}
+
+.header {
+    height: 95vh;
+    background-image: url(../img/hero.jpg);
+    /* 
+    cover will ensure that the element within the viewport will
+    always COVER the width. So when you alter the viewport width
+    the width of header will also change.
+     */
+    background-size: cover;
+}
