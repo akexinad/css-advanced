@@ -24,15 +24,35 @@ body {
     font-size: 16px;
     line-height: 1.7;
     color: #777;
+    padding: 30px;
 }
 
 .header {
     height: 95vh;
-    background-image: url(../img/hero.jpg);
+    /* 
+    here we have two background images.
+    The first is this gradient which goes from left to right.
+    Then we have the image.
+     */
+    background-image: linear-gradient(
+        to right bottom,
+        #7ed56fcc,
+        #28b485cc
+    ),
+    url(../img/hero.jpg);
     /* 
     cover will ensure that the element within the viewport will
     always COVER the width. So when you alter the viewport width
     the width of header will also change.
      */
     background-size: cover;
+    /* 
+    when resizing the viewport, the image will crop along the bottom,
+    staying in position along the top.
+     */
+    background-position: top;
+    /* 
+    NOTE: the first coordinate begins in the top left corner.
+     */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
