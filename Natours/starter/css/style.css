@@ -165,6 +165,18 @@ change are the opacity and transform methods.
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
 /*
 this is an example of a pseudo-class
 pseudo classes represent special states of certain elements
@@ -182,6 +194,7 @@ pseudo classes represent special states of certain elements
     display: inline-block;
     border-radius: 100px;
     transition: all .2s;
+    position: relative;
 }
 
 .btn:hover {
@@ -197,4 +210,50 @@ pseudo classes represent special states of certain elements
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+/* 
+This is an example of a pseudo element
+A pseudo element allows us to style only certain parts of elements.
+The after pseudo element allows to style the element after an event.
+You can think of it a virtual element that hides behind the actual element.
+ */ 
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* 
+    we need to hide it behind the button and this can be done by giving it
+    a position of absolute relative to current button.
+     */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out 0.75s;
+    /* 
+    It automatically applies the styles to the element 
+    that you have declared at the 0% mark
+    in the custom animation before the animation starts.
+
+    In this case, given that the animation has a delay of .75s, 
+    the element begins with an opacity of 0 so we do not
+    see the button until the animation commences. 
+     */
+    animation-fill-mode: backwards;
 }
