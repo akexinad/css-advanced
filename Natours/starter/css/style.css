@@ -250,7 +250,6 @@ You can think of it a virtual element that hides behind the actual element.
     It automatically applies the styles to the element 
     that you have declared at the 0% mark
     in the custom animation before the animation starts.
-
     In this case, given that the animation has a delay of .75s, 
     the element begins with an opacity of 0 so we do not
     see the button until the animation commences. 
