@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$colour-primary: #f9ed69;
+$colour-secondary: #f08a5d;
+$colour-tertiary: #b83b5e;
+$colour-text-dark: #333;
+$colour-text-light: #eee;
+
+$width-button: 150px;
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin style-link-text($colour) {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $colour;
+}
+
+nav {
+  margin: 30px;
+  background-color: $colour-primary;
+
+  @include clearfix;
+}
+
+.navigation {
+  list-style: none;
+  float: left;
+
+  li {
+    display: inline-block;
+    margin-left: 30px;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    a:link {
+      @include style-link-text($colour-text-dark);
+    }
+  }
+}
+
+.buttons {
+  float: right;
+}
+
+/**
+  extensibility in css
+  ====================
+  
+  in contrast to mixins, extends can be used when
+  the elements you are dealing with are identical.
+  */
+
+%btn-placeholder {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: $width-button;
+  @include style-link-text($colour-text-light);
+}
+
+.btn-main {
+  &:link {
+    @extend %btn-placeholder;
+    background-color: $colour-secondary;
+  }
+
+  &:hover {
+    background-color: darken($colour-secondary, 15%);
+  }
+}
+
+.btn-hot {
+  &:link {
+    @extend %btn-placeholder;
+    background-color: $colour-tertiary;
+  }
+
+  &:hover {
+    background-color: lighten($colour-tertiary, 15%);
+  }
+}
