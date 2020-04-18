@@ -85,7 +85,7 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
     /* 
     the top and bottom props of this element are relative to its parent element.
@@ -97,13 +97,13 @@ body {
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     /* height: 35px; */
     height: 3.5rem;
     animation: moveInRight 1s ease-out;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -131,7 +131,7 @@ body {
     margin: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     /* display is originally an inline element */
     display: block;
     /* font-size: 60px; */
@@ -149,7 +149,7 @@ body {
      */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     /* font-size: 20px; */
     font-size: 2rem;
@@ -250,7 +250,7 @@ pseudo classes represent special states of certain elements
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -279,7 +279,7 @@ You can think of it a virtual element that hides behind the actual element.
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -288,7 +288,7 @@ You can think of it a virtual element that hides behind the actual element.
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out 0.75s;
     /* 
     It automatically applies the styles to the element 
