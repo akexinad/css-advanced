@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass ./sass/main.scss css/compiled_css.css -w",
+    "compile:sass": "node-sass ./sass/main.scss ./public/css/compiled_css.css",
+    "watch:sass": "nodemon -e scss -x \"npm run compile:sass\"",
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "live-server": "^1.2.1",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.3"
   },
   "dependencies": {}
 }

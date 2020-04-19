@@ -7,14 +7,6 @@ Dark green: #28b485
 
 */
 
-$colour-primary: #55c57a;
-$colour-primary-light: #7ed56f;
-$colour-primary-dark: #28b485;
-
-$colour-grey-dark: #777;
-$colour-white: #fff;
-$colour-black: #000;
-
 /* The universal selector */
 /* 
 We also want to make sure that the before and after
@@ -54,8 +46,8 @@ body {
     font-weight: 400;
     /* font-size: 16px; */
     line-height: 1.7;
-    color: $colour-grey-dark;
-    background-color: $colour-black;
+    color: #777;
+    background-color: black;
     /* padding: 30px; */
     padding: 3rem;
 
@@ -72,8 +64,8 @@ body {
      */
     background-image: linear-gradient(
         to right bottom,
-        rgba($colour-primary-light, 0.8),
-        rgba($colour-primary-dark, 0.8)
+        #7ed56fcc,
+        #28b485cc
     ),
     url(../img/hero.jpg);
     /* 
@@ -127,7 +119,7 @@ body {
 }
 
 .heading-primary {
-    color: $colour-white;
+    color: #fff;
     text-transform: uppercase;
 
     /* 
@@ -249,18 +241,18 @@ pseudo classes represent special states of certain elements
 .btn:hover {
     transform: translateY(-3px);
     /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
-    box-shadow: 0 1rem 2rem rgba($colour-black, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 .btn:active {
     transform: translateY(-1px);
     /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
-    box-shadow: 0 .5rem 1rem rgba($colour-black, .2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn--white {
-    background-color: $colour-white;
-    color: $colour-grey-dark;
+    background-color: #fff;
+    color: #777;
 }
 
 /* 
@@ -288,7 +280,7 @@ You can think of it a virtual element that hides behind the actual element.
 }
 
 .btn--white::after {
-    background-color: $colour-white;
+    background-color: #fff;
 }
 
 .btn:hover::after {
