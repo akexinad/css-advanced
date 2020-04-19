@@ -72,37 +72,37 @@ body {
   /* 
     NOTE: the first coordinate begins in the top left corner.
      */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-
-.header__logo-box {
-  position: absolute;
-  /* 
-    the top and bottom props of this element are relative to its parent element.
-    In this case it is the header element.
-     */
-  /* top: 40px; */
-  top: 4rem;
-  /* left: 40px; */
-  left: 4rem; }
-
-.header__logo {
-  /* height: 35px; */
-  height: 3.5rem;
-  animation: moveInRight 1s ease-out; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* 
-    The top and left props are relative to parent header element.
-    This will put the left side of the text box in the center, so to
-    get the center to the text box to the center of the parent element
-    we use transform to move 50% of the elements height to the top and left,
-    thus positioning the text box in the center.
-     */
-  transform: translate(-50%, -50%);
-  text-align: center; }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /*
+    We can now use nesting with our class names.
+    */ }
+  .header__logo-box {
+    position: absolute;
+    /* 
+        the top and bottom props of this element are relative to its parent element.
+        In this case it is the header element.
+         */
+    /* top: 40px; */
+    top: 4rem;
+    /* left: 40px; */
+    left: 4rem; }
+  .header__logo {
+    /* height: 35px; */
+    height: 3.5rem;
+    animation: moveInRight 1s ease-out; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* 
+        The top and left props are relative to parent header element.
+        This will put the left side of the text box in the center, so to
+        get the center to the text box to the center of the parent element
+        we use transform to move 50% of the elements height to the top and left,
+        thus positioning the text box in the center.
+         */
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
@@ -114,32 +114,30 @@ body {
   backface-visibility: hidden;
   /* margin: 60px; */
   margin: 6rem; }
-
-.heading-primary--main {
-  /* display is originally an inline element */
-  display: block;
-  /* font-size: 60px; */
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 35px;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /* 
-    animation-delay: 3s;
-    animation-iteration-count: 3;
-     */ }
-
-.heading-primary--sub {
-  display: block;
-  /* font-size: 20px; */
-  font-size: 2rem;
-  font-weight: 700;
-  /* letter-spacing: 17.4px; */
-  letter-spacing: 1.75rem;
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  .heading-primary--main {
+    /* display is originally an inline element */
+    display: block;
+    /* font-size: 60px; */
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* 
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+         */ }
+  .heading-primary--sub {
+    display: block;
+    /* font-size: 20px; */
+    font-size: 2rem;
+    font-weight: 700;
+    /* letter-spacing: 17.4px; */
+    letter-spacing: 1.75rem;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
 
 /* 
 For browser optmization and performance, the two best props to
@@ -182,76 +180,69 @@ change are the opacity and transform methods.
 this is an example of a pseudo-class
 pseudo classes represent special states of certain elements
 */
-.btn:link,
-.btn:visited {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  /* padding: 15px 40px; */
-  padding: 1.5rem 4rem;
+.btn {
   /* 
-    Since all elements have a box sizing of border box,
-    you need to set display to inline block in order for the
-    element to respect the padding provided.
-     */
-  display: inline-block;
-  /* border-radius: 100px; */
-  border-radius: 10rem;
-  transition: all .2s;
-  position: relative; }
-
-.btn:hover {
-  transform: translateY(-3px);
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-1px);
-  /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/* 
-This is an example of a pseudo element
-A pseudo element allows us to style only certain parts of elements.
-The after pseudo element allows to style the element after an event.
-You can think of it a virtual element that hides behind the actual element.
- */
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  /* border-radius: 100px; */
-  border-radius: 10rem;
-  /* 
-    we need to hide it behind the button and this can be done by giving it
-    a position of absolute relative to current button.
-     */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  animation: moveInBottom .5s ease-out 0.75s;
-  /* 
-    It automatically applies the styles to the element 
-    that you have declared at the 0% mark
-    in the custom animation before the animation starts.
-    In this case, given that the animation has a delay of .75s, 
-    the element begins with an opacity of 0 so we do not
-    see the button until the animation commences. 
-     */
-  animation-fill-mode: backwards; }
+    This is an example of a pseudo element
+    A pseudo element allows us to style only certain parts of elements.
+    The after pseudo element allows to style the element after an event.
+    You can think of it a virtual element that hides behind the actual element.
+    */ }
+  .btn:link, .btn:visited {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* padding: 15px 40px; */
+    padding: 1.5rem 4rem;
+    /* 
+        Since all elements have a box sizing of border box,
+        you need to set display to inline block in order for the
+        element to respect the padding provided.
+         */
+    display: inline-block;
+    /* border-radius: 100px; */
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative; }
+  .btn:hover {
+    transform: translateY(-3px);
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    /* border-radius: 100px; */
+    border-radius: 10rem;
+    /* 
+        we need to hide it behind the button and this can be done by giving it
+        a position of absolute relative to current button.
+         */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out 0.75s;
+    /* 
+        It automatically applies the styles to the element 
+        that you have declared at the 0% mark
+        in the custom animation before the animation starts.
+        In this case, given that the animation has a delay of .75s, 
+        the element begins with an opacity of 0 so we do not
+        see the button until the animation commences. 
+         */
+    animation-fill-mode: backwards; }
