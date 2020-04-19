@@ -1,0 +1,257 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+/* The universal selector */
+/* 
+We also want to make sure that the before and after
+pseudo elements also inherit these properties
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* 
+    this ensures that the box borders and paddinare are 
+    not added to the total width or height of the box.
+
+    It's also better practice to make box sizing inheritable 
+    so you are able to change the box sizing when you need to.
+     */
+  box-sizing: inherit; }
+
+html {
+  /* 
+    by declaring the font size at the root we can now 
+    replace all out px units to rem units
+
+    Using pixels to determine font size is very bad practice
+    as it goes against the principles of accessability.
+    https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/
+
+    We should use a percentage of the browsers default font size, which is 16px.
+     */
+  font-size: 62.5%; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  background-color: black;
+  /* padding: 30px; */
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.header {
+  position: relative;
+  height: 95vh;
+  /* 
+    here we have two background images.
+    The first is this gradient which goes from left to right.
+    Then we have the image.
+     */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* 
+    cover will ensure that the element within the viewport will
+    always COVER the width. So when you alter the viewport width
+    the width of header will also change.
+     */
+  background-size: cover;
+  /* 
+    when resizing the viewport, the image will crop along the bottom,
+    staying in position along the top.
+     */
+  background-position: top;
+  /* 
+    NOTE: the first coordinate begins in the top left corner.
+     */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+
+.header__logo-box {
+  position: absolute;
+  /* 
+    the top and bottom props of this element are relative to its parent element.
+    In this case it is the header element.
+     */
+  /* top: 40px; */
+  top: 4rem;
+  /* left: 40px; */
+  left: 4rem; }
+
+.header__logo {
+  /* height: 35px; */
+  height: 3.5rem;
+  animation: moveInRight 1s ease-out; }
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  /* 
+    The top and left props are relative to parent header element.
+    This will put the left side of the text box in the center, so to
+    get the center to the text box to the center of the parent element
+    we use transform to move 50% of the elements height to the top and left,
+    thus positioning the text box in the center.
+     */
+  transform: translate(-50%, -50%);
+  text-align: center; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* 
+    sometimes with animations the entire element can shake uncontrollably.
+    It is almost unnoticable sometimes but this is the fix.
+     */
+  backface-visibility: hidden;
+  /* margin: 60px; */
+  margin: 6rem; }
+
+.heading-primary--main {
+  /* display is originally an inline element */
+  display: block;
+  /* font-size: 60px; */
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 35px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /* 
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+     */ }
+
+.heading-primary--sub {
+  display: block;
+  /* font-size: 20px; */
+  font-size: 2rem;
+  font-weight: 700;
+  /* letter-spacing: 17.4px; */
+  letter-spacing: 1.75rem;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
+/* 
+For browser optmization and performance, the two best props to
+change are the opacity and transform methods.
+ */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* transform: translateX(-100px) rotate(-180deg); */
+    transform: translateX(-10rem) rotate(-180deg); }
+  80% {
+    /* transform: translateX(10px); */
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* transform: translateX(100px) rotate(180deg); */
+    transform: translateX(10rem) rotate(180deg); }
+  80% {
+    /* transform: translateX(-10px); */
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    /* transform: translateY(30px); */
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+/*
+this is an example of a pseudo-class
+pseudo classes represent special states of certain elements
+*/
+.btn:link,
+.btn:visited {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* padding: 15px 40px; */
+  padding: 1.5rem 4rem;
+  /* 
+    Since all elements have a box sizing of border box,
+    you need to set display to inline block in order for the
+    element to respect the padding provided.
+     */
+  display: inline-block;
+  /* border-radius: 100px; */
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.btn:active {
+  transform: translateY(-1px);
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+
+/* 
+This is an example of a pseudo element
+A pseudo element allows us to style only certain parts of elements.
+The after pseudo element allows to style the element after an event.
+You can think of it a virtual element that hides behind the actual element.
+ */
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  /* border-radius: 100px; */
+  border-radius: 10rem;
+  /* 
+    we need to hide it behind the button and this can be done by giving it
+    a position of absolute relative to current button.
+     */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
+
+.btn--white::after {
+  background-color: #fff; }
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out 0.75s;
+  /* 
+    It automatically applies the styles to the element 
+    that you have declared at the 0% mark
+    in the custom animation before the animation starts.
+    In this case, given that the animation has a delay of .75s, 
+    the element begins with an opacity of 0 so we do not
+    see the button until the animation commences. 
+     */
+  animation-fill-mode: backwards; }
