@@ -1,0 +1,66 @@
+.header {
+    position: relative;
+    height: 95vh;
+    /* 
+    here we have two background images.
+    The first is this gradient which goes from left to right.
+    Then we have the image.
+     */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($colour-primary-light, 0.8),
+        rgba($colour-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+    /* 
+    cover will ensure that the element within the viewport will
+    always COVER the width. So when you alter the viewport width
+    the width of header will also change.
+     */
+    background-size: cover;
+    /* 
+    when resizing the viewport, the image will crop along the bottom,
+    staying in position along the top.
+     */
+    background-position: top;
+    /* 
+    NOTE: the first coordinate begins in the top left corner.
+     */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    /*
+    We can now use nesting with our class names.
+    */
+    &__logo-box {
+        position: absolute;
+        /* 
+        the top and bottom props of this element are relative to its parent element.
+        In this case it is the header element.
+         */
+        /* top: 40px; */
+        top: 4rem;
+        /* left: 40px; */
+        left: 4rem;    
+    }
+
+    &__logo {
+        /* height: 35px; */
+        height: 3.5rem;
+        animation: moveInRight 1s ease-out;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* 
+        The top and left props are relative to parent header element.
+        This will put the left side of the text box in the center, so to
+        get the center to the text box to the center of the parent element
+        we use transform to move 50% of the elements height to the top and left,
+        thus positioning the text box in the center.
+         */
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}

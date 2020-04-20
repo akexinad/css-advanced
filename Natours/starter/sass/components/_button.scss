@@ -1,0 +1,87 @@
+/*
+this is an example of a pseudo-class
+pseudo classes represent special states of certain elements
+*/
+.btn {
+    &:link,
+    &:visited {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        /* padding: 15px 40px; */
+        padding: 1.5rem 4rem;
+        /* 
+        Since all elements have a box sizing of border box,
+        you need to set display to inline block in order for the
+        element to respect the padding provided.
+         */
+        display: inline-block;
+        /* border-radius: 100px; */
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
+        box-shadow: 0 1rem 2rem rgba($colour-black, .2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
+        box-shadow: 0 .5rem 1rem rgba($colour-black, .2);
+    }
+
+    &--white {
+        background-color: $colour-white;
+        color: $colour-grey-dark;
+
+        &::after {
+            background-color: $colour-white;
+        }
+    }
+
+    /* 
+    This is an example of a pseudo element
+    A pseudo element allows us to style only certain parts of elements.
+    The after pseudo element allows to style the element after an event.
+    You can think of it a virtual element that hides behind the actual element.
+    */ 
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        /* border-radius: 100px; */
+        border-radius: 10rem;
+        /* 
+        we need to hide it behind the button and this can be done by giving it
+        a position of absolute relative to current button.
+         */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--animated {
+        animation: moveInBottom .5s ease-out 0.75s;
+        /* 
+        It automatically applies the styles to the element 
+        that you have declared at the 0% mark
+        in the custom animation before the animation starts.
+        In this case, given that the animation has a delay of .75s, 
+        the element begins with an opacity of 0 so we do not
+        see the button until the animation commences. 
+         */
+        animation-fill-mode: backwards;
+    }
+}

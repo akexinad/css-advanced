@@ -1,0 +1,52 @@
+/*
+This is an example of a partial scss file.
+
+
+These elemnts go into the base file because these are the 
+basic definitions of out entire project.
+*/
+
+
+/* The universal selector */
+/* 
+We also want to make sure that the before and after
+pseudo elements also inherit these properties
+*/
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+      /* 
+    this ensures that the box borders and paddinare are 
+    not added to the total width or height of the box.
+
+    It's also better practice to make box sizing inheritable 
+    so you are able to change the box sizing when you need to.
+     */
+    box-sizing: inherit;
+}
+
+html {
+    /* 
+    by declaring the font size at the root we can now 
+    replace all out px units to rem units
+
+    Using pixels to determine font size is very bad practice
+    as it goes against the principles of accessability.
+    https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/
+
+    We should use a percentage of the browsers default font size, which is 16px.
+     */
+
+    /*
+    One can argue that this makes part of typography, but this actually works
+    as a definition checkpoint for setting our rem . 
+    */
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}

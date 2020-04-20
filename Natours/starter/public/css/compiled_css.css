@@ -1,10 +1,9 @@
 /*
-COLORS:
+This is an example of a partial scss file.
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
 
+These elemnts go into the base file because these are the 
+basic definitions of out entire project.
 */
 /* The universal selector */
 /* 
@@ -36,7 +35,47 @@ html {
 
     We should use a percentage of the browsers default font size, which is 16px.
      */
+  /*
+    One can argue that this makes part of typography, but this actually works
+    as a definition checkpoint for setting our rem . 
+    */
   font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* transform: translateX(-100px) rotate(-180deg); */
+    transform: translateX(-10rem) rotate(-180deg); }
+  80% {
+    /* transform: translateX(10px); */
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* transform: translateX(100px) rotate(180deg); */
+    transform: translateX(10rem) rotate(180deg); }
+  80% {
+    /* transform: translateX(-10px); */
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    /* transform: translateY(30px); */
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -46,63 +85,7 @@ body {
   color: #777;
   background-color: #000;
   /* padding: 30px; */
-  padding: 3rem;
-  box-sizing: border-box; }
-
-.header {
-  position: relative;
-  height: 95vh;
-  /* 
-    here we have two background images.
-    The first is this gradient which goes from left to right.
-    Then we have the image.
-     */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  /* 
-    cover will ensure that the element within the viewport will
-    always COVER the width. So when you alter the viewport width
-    the width of header will also change.
-     */
-  background-size: cover;
-  /* 
-    when resizing the viewport, the image will crop along the bottom,
-    staying in position along the top.
-     */
-  background-position: top;
-  /* 
-    NOTE: the first coordinate begins in the top left corner.
-     */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /*
-    We can now use nesting with our class names.
-    */ }
-  .header__logo-box {
-    position: absolute;
-    /* 
-        the top and bottom props of this element are relative to its parent element.
-        In this case it is the header element.
-         */
-    /* top: 40px; */
-    top: 4rem;
-    /* left: 40px; */
-    left: 4rem; }
-  .header__logo {
-    /* height: 35px; */
-    height: 3.5rem;
-    animation: moveInRight 1s ease-out; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /* 
-        The top and left props are relative to parent header element.
-        This will put the left side of the text box in the center, so to
-        get the center to the text box to the center of the parent element
-        we use transform to move 50% of the elements height to the top and left,
-        thus positioning the text box in the center.
-         */
-    transform: translate(-50%, -50%);
-    text-align: center; }
+  padding: 3rem; }
 
 .heading-primary {
   color: #fff;
@@ -138,43 +121,6 @@ body {
     animation-name: moveInRight;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
-
-/* 
-For browser optmization and performance, the two best props to
-change are the opacity and transform methods.
- */
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    /* transform: translateX(-100px) rotate(-180deg); */
-    transform: translateX(-10rem) rotate(-180deg); }
-  80% {
-    /* transform: translateX(10px); */
-    transform: translateX(1rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    /* transform: translateX(100px) rotate(180deg); */
-    transform: translateX(10rem) rotate(180deg); }
-  80% {
-    /* transform: translateX(-10px); */
-    transform: translateX(-1rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes moveInBottom {
-  0% {
-    opacity: 0;
-    /* transform: translateY(30px); */
-    transform: translateY(3rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
 
 /*
 this is an example of a pseudo-class
@@ -246,3 +192,58 @@ pseudo classes represent special states of certain elements
         see the button until the animation commences. 
          */
     animation-fill-mode: backwards; }
+
+.header {
+  position: relative;
+  height: 95vh;
+  /* 
+    here we have two background images.
+    The first is this gradient which goes from left to right.
+    Then we have the image.
+     */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* 
+    cover will ensure that the element within the viewport will
+    always COVER the width. So when you alter the viewport width
+    the width of header will also change.
+     */
+  background-size: cover;
+  /* 
+    when resizing the viewport, the image will crop along the bottom,
+    staying in position along the top.
+     */
+  background-position: top;
+  /* 
+    NOTE: the first coordinate begins in the top left corner.
+     */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /*
+    We can now use nesting with our class names.
+    */ }
+  .header__logo-box {
+    position: absolute;
+    /* 
+        the top and bottom props of this element are relative to its parent element.
+        In this case it is the header element.
+         */
+    /* top: 40px; */
+    top: 4rem;
+    /* left: 40px; */
+    left: 4rem; }
+  .header__logo {
+    /* height: 35px; */
+    height: 3.5rem;
+    animation: moveInRight 1s ease-out; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* 
+        The top and left props are relative to parent header element.
+        This will put the left side of the text box in the center, so to
+        get the center to the text box to the center of the parent element
+        we use transform to move 50% of the elements height to the top and left,
+        thus positioning the text box in the center.
+         */
+    transform: translate(-50%, -50%);
+    text-align: center; }
