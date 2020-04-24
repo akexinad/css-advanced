@@ -1,0 +1,69 @@
+.row {
+    /*
+    max width makes our screen responsive
+    */
+    max-width: $grid-width;
+    background-color: #eee;
+    /*
+    method of centering block elements
+    inside of other block elements.
+    */
+    margin: 0 auto;
+    /*
+    The NOT pseudo selector.
+    The NOT pesudo-class will select everything except
+    the selector you declare. In this instance all rows
+    will have a margin bottom except the last row.
+    */
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    /*
+    Since the child elements of the row element are floated,
+    they lose their height property.
+    And a way to fix this is to use a clearFix mixin.
+    */
+    @include clearFix;
+
+    /*
+    This is an attribute selector.
+    Below is an example of how we want to select all classes
+    that begin with (^=) "col-".
+    */
+    [class^="col-"] {
+        background-color: orangered;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - #{$gutter-horizontal} * 2) / 3);
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - #{$gutter-horizontal} * 3) / 4);
+    }
+
+    .col-2-of-3 {
+        width: calc(((100% - #{$gutter-horizontal} * 2) / 3) * 2 + #{$gutter-horizontal});
+    }
+
+    .col-2-of-4 {
+        width: calc(((100% - #{$gutter-horizontal} * 3) / 4) * 2 + #{$gutter-horizontal});
+    }
+
+    .col-3-of-4 {
+        width: calc(((100% - #{$gutter-horizontal} * 3) / 4) * 3 + 2 * #{$gutter-horizontal});
+    }
+
+    
+}
