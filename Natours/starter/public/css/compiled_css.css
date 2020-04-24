@@ -83,7 +83,7 @@ body {
   /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  background-color: #000;
+  background-color: #fff;
   /* padding: 30px; */
   padding: 3rem; }
 
@@ -103,7 +103,7 @@ body {
     /* font-size: 60px; */
     font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.4rem;
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -117,10 +117,44 @@ body {
     font-size: 2rem;
     font-weight: 700;
     /* letter-spacing: 17.4px; */
-    letter-spacing: 1.75rem;
+    letter-spacing: 1.8rem;
     animation-name: moveInRight;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  /*
+    Only using the prefixed version of a property is not future-proof
+    insofar as browser compatibility is concerned. Once a browser fully
+    supports a property it will drop the need for the prefix and instead
+    come to need the unprefixed property.
+    */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /*
+    With a size so small there really is no need to use rem.
+    */
+  letter-spacing: 2px;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+/*
+this utililty can now be reused to center our texts
+when we need to.
+*/
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
 
 /*
 this is an example of a pseudo-class
@@ -253,7 +287,6 @@ pseudo classes represent special states of certain elements
     max width makes our screen responsive
     */
   max-width: 114rem;
-  background-color: #eee;
   /*
     method of centering block elements
     inside of other block elements.
@@ -282,7 +315,6 @@ pseudo classes represent special states of certain elements
     display: table;
     clear: both; }
   .row [class^="col-"] {
-    background-color: orangered;
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
@@ -298,3 +330,13 @@ pseudo classes represent special states of certain elements
     width: calc(((100% - 6rem * 3) / 4) * 2 + 6rem); }
   .row .col-3-of-4 {
     width: calc(((100% - 6rem * 3) / 4) * 3 + 2 * 6rem); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  /*
+    We give it a negative margin to move it up so it
+    marries with the shorter of the polygon created in 
+    the header.
+    */
+  margin-top: -20vh; }

@@ -4,7 +4,7 @@ body {
     /* font-size: 16px; */
     line-height: 1.7;
     color: $colour-grey-dark;
-    background-color: $colour-black;
+    background-color: $colour-white;
     /* padding: 30px; */
     padding: 3rem;
 }
@@ -27,7 +27,7 @@ body {
         /* font-size: 60px; */
         font-size: 6rem;
         font-weight: 400;
-        letter-spacing: 35px;
+        letter-spacing: 3.4rem;
     
         animation-name: moveInLeft;
         animation-duration: 1s;
@@ -45,10 +45,39 @@ body {
         font-size: 2rem;
         font-weight: 700;
         /* letter-spacing: 17.4px; */
-        letter-spacing: 1.75rem;
+        letter-spacing: 1.8rem;
     
         animation-name: moveInRight;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+    }
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, $colour-primary-light, $colour-primary-dark);
+
+    /*
+    Only using the prefixed version of a property is not future-proof
+    insofar as browser compatibility is concerned. Once a browser fully
+    supports a property it will drop the need for the prefix and instead
+    come to need the unprefixed property.
+    */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+    /*
+    With a size so small there really is no need to use rem.
+    */
+    letter-spacing: 2px;
+    transition: all .2s;
+
+    &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba($colour-black, .2);
     }
 }

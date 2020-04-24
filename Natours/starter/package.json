@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile:sass": "node-sass ./sass/main.scss ./public/css/compiled_css.css",
-    "watch:sass": "nodemon -e scss -x \"npm run compile:sass\"",
+    "dev": "nodemon -e scss -x \"npm run compile:sass\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

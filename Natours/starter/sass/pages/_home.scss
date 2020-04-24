@@ -1,0 +1,10 @@
+.section-about {
+    background-color: $colour-grey-light;
+    padding: 25rem 0;
+    /*
+    We give it a negative margin to move it up so it
+    marries with the shorter of the polygon created in 
+    the header.
+    */
+    margin-top: -20vh;
+}
