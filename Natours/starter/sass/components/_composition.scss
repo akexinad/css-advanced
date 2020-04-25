@@ -1,0 +1,53 @@
+.composition {
+    position: relative;
+    
+    /*
+    The reason we use % to determine image sizes is related
+    to responsive web design.
+
+    Using % will ensure that the image scales with the size 
+    of the view port.
+    */
+    
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($colour-black, .4);
+        border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+        /*
+        outline prop can give us the border with an offset 
+        */
+        outline-offset: 2rem;
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $colour-primary;            
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($colour-black, .5);
+            z-index: 20;
+        }
+    }
+
+    /*
+    scaling down the non-hovered images inside the composition
+    */
+    &:hover &__photo:not(:hover) {
+        transform: scale(0.95);
+    }
+}
