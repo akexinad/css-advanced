@@ -8,3 +8,38 @@
     */
     margin-top: -20vh;
 }
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($colour-primary-light, .8),
+        rgba($colour-primary-dark, .8),
+    ),
+    url(../img/nat-4.jpg);
+    background-size: cover;
+
+    /*
+    What is happening here?
+    We are skewing the background by neg 7 degrees to get a similar we create
+    in the main section above this one.
+
+    Therefore to not have everything skew in this container we skew the direct children back to normal cancelling out the neg 7 by adding 7.
+    */    
+    transform: skewY(-7deg);
+    margin-top: -8rem;
+    /*
+     > === the direct child selector
+     https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
+
+     this ensures that you ONLY select the DIRECT children. NOT ALL THE CHILDREN.
+
+     Thus it will only apply on the div.row and not on the children
+     of div.row.
+
+     If we skewed everything by using '& *' then all the children would be skewed in the other direction by 7 degrees.
+    */
+    & > * {
+        transform: skewY(7deg);
+    }
+}

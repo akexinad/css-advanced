@@ -5,3 +5,23 @@
         clear: both;
     }
 }
+
+/*
+This mixin gives the element a coloured gradient.
+Here it is used on icons as well as headings as an example.
+*/
+@mixin gradientify {
+    display: inline-block;
+    background-image: linear-gradient(to right, $colour-primary-light, $colour-primary-dark);
+
+    /*
+    Only using the prefixed version of a property is not future-proof
+    insofar as browser compatibility is concerned. Once a browser fully
+    supports a property it will drop the need for the prefix and instead
+    come to need the unprefixed property.
+    */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}

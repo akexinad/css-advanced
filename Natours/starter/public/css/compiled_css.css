@@ -1,4 +1,8 @@
 /*
+This mixin gives the element a coloured gradient.
+Here it is used on icons as well as headings as an example.
+*/
+/*
 This is an example of a partial scss file.
 
 
@@ -302,6 +306,31 @@ pseudo classes represent special states of certain elements
   .composition:hover .composition__photo:not(:hover) {
     transform: scale(0.95); }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform .2s; }
+  .feature-box__icon {
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    /*
+    Only using the prefixed version of a property is not future-proof
+    insofar as browser compatibility is concerned. Once a browser fully
+    supports a property it will drop the need for the prefix and instead
+    come to need the unprefixed property.
+    */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 6rem;
+    margin-bottom: .5rem; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
 .header {
   position: relative;
   height: 95vh;
@@ -415,3 +444,30 @@ pseudo classes represent special states of certain elements
     the header.
     */
   margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  /*
+    What is happening here?
+    We are skewing the background by neg 7 degrees to get a similar we create
+    in the main section above this one.
+
+    Therefore to not have everything skew in this container we skew the direct children back to normal cancelling out the neg 7 by adding 7.
+    */
+  transform: skewY(-7deg);
+  margin-top: -8rem;
+  /*
+     > === the direct child selector
+     https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
+
+     this ensures that you ONLY select the DIRECT children. NOT ALL THE CHILDREN.
+
+     Thus it will only apply on the div.row and not on the children
+     of div.row.
+
+     If we skewed everything by using '& *' then all the children would be skewed in the other direction by 7 degrees.
+    */ }
+  .section-features > * {
+    transform: skewY(7deg); }
