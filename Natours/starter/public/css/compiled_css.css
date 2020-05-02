@@ -266,6 +266,57 @@ pseudo classes represent special states of certain elements
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transform: translateY(0); }
 
+.card {
+  /*
+    perspective is a property that gives the
+    element a 3d look and feel.
+    */
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  /*
+    when positioning things aboslutely they lose their height
+    property, similar to what happens with floats.
+
+    Without the height property the card loses its perspective.
+    
+    This is why we need to explicit the height property on parent
+    as well as the child.
+    */
+  height: 50rem; }
+  .card__side {
+    background-color: orangered;
+    color: white;
+    font-size: 2rem;
+    height: 50rem;
+    transition: transform .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*
+        when you give items an aboslute position
+        you will also need to specify the actual width
+        you want them to have or else their width
+        will naturally collapse.
+        */
+    width: 100%;
+    /*
+        this hides the back of the card when it is rotating.
+        */
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5px 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+  .card:hover .card__side--front {
+    transform: rotateY(180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+
 .composition {
   position: relative;
   /*
@@ -447,7 +498,7 @@ pseudo classes represent special states of certain elements
 
 .section-features {
   padding: 20rem 0;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
   background-size: cover;
   /*
     What is happening here?
@@ -459,7 +510,7 @@ pseudo classes represent special states of certain elements
   transform: skewY(-7deg);
   margin-top: -8rem;
   /*
-     > === the direct child selector
+     > : the direct child selector
      https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
 
      this ensures that you ONLY select the DIRECT children. NOT ALL THE CHILDREN.
@@ -471,3 +522,8 @@ pseudo classes represent special states of certain elements
     */ }
   .section-features > * {
     transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -8rem; }

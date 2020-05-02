@@ -25,3 +25,13 @@ Here it is used on icons as well as headings as an example.
 
     color: transparent;
 }
+
+@mixin backgroundWithGradientAndImage($imgUrl) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($colour-primary-light, 0.8),
+        rgba($colour-primary-dark, 0.8)
+    ),
+    url($imgUrl);
+    background-size: cover;
+}

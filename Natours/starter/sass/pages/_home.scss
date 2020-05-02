@@ -11,14 +11,8 @@
 
 .section-features {
     padding: 20rem 0;
-    background-image: linear-gradient(
-        to right bottom,
-        rgba($colour-primary-light, .8),
-        rgba($colour-primary-dark, .8),
-    ),
-    url(../img/nat-4.jpg);
-    background-size: cover;
-
+    @include backgroundWithGradientAndImage("../img/nat-4.jpg");
+    
     /*
     What is happening here?
     We are skewing the background by neg 7 degrees to get a similar we create
@@ -29,7 +23,7 @@
     transform: skewY(-7deg);
     margin-top: -8rem;
     /*
-     > === the direct child selector
+     > : the direct child selector
      https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
 
      this ensures that you ONLY select the DIRECT children. NOT ALL THE CHILDREN.
@@ -42,4 +36,11 @@
     & > * {
         transform: skewY(7deg);
     }
+}
+
+.section-tours {
+    background-color: $colour-grey-light;
+    padding: 25rem 0 50rem 0;
+    margin-top: -8rem;
+
 }
