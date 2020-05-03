@@ -1,4 +1,6 @@
 .card {
+    // 1. WE BEGIN WITH FUNCTIONALITY
+    
     /*
     perspective is a property that gives the
     element a 3d look and feel.
@@ -17,13 +19,10 @@
     This is why we need to explicit the height property on parent
     as well as the child.
     */
-    height: 50rem;
+    height: 52rem;
     
     &__side {
-        background-color: orangered;
-        color: white;
-        font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         transition: transform .8s ease;
 
         position: absolute;
@@ -41,8 +40,15 @@
         /*
         this hides the back of the card when it is rotating.
         */
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: 3px;
+        /*
+        the image overlaps the card and therefore loses its
+        border radius. So we can use the overflow property
+        to stop the image from overflowing the parent.
+        */
+        overflow: hidden;
         box-shadow: 0 1.5px 4rem rgba($colour-black, .15);
 
         &--front {
@@ -52,17 +58,117 @@
         &--back {
             transform: rotateY(180deg);
             
-            &-1 {
+            &--1 {
                 background-image: linear-gradient(to right bottom, $colour-secondary-light, $colour-secondary-dark);
+            }
+
+            &--2 {
+                background-image: linear-gradient(to right bottom, $colour-primary-light, $colour-primary-dark);
+            }
+
+            &--3 {
+                background-image: linear-gradient(to right bottom, $colour-tertiary-light, $colour-tertiary-dark);
             }
         }
     }
 
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 
     &:hover &__side--back {
         transform: rotateY(0);
+    }
+
+
+    // 2. FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+
+        /*
+        A brand new css property.
+        Blends the gradient with the image.
+        */
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(
+                to right bottom,
+                $colour-secondary-light,
+                $colour-secondary-dark
+            ),
+            url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: linear-gradient(
+                to right bottom,
+                $colour-primary-light,
+                $colour-primary-dark
+            ),
+            url(../img/nat-5.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(
+                to right bottom,
+                $colour-tertiary-light,
+                $colour-tertiary-dark
+            ),
+            url(../img/nat-5.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $colour-white;
+        position: absolute;
+        top: 12rem;
+        right: 4rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        /*
+        this property clones the properties to 
+        all of the boxes that have been created
+        */
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba($colour-secondary-light, .85),
+                rgba($colour-secondary-dark, .85)
+            );
+        }
+    }
+    
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        li {
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 1rem;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $colour-grey-light;
+            }
+        }
     }
 }
