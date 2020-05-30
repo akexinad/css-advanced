@@ -73,6 +73,10 @@
     }
 
     &:hover &__side--front {
+        /*
+        using the minus value ensures that the card
+        rotates in the correct direction.
+        */
         transform: rotateY(-180deg);
     }
 
@@ -90,7 +94,8 @@
         A brand new css property.
         Blends the gradient with the image.
         */
-        background-blend-mode: screen;
+        background-blend-mode: color;
+
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
@@ -137,7 +142,12 @@
     &__heading-span {
         padding: 1rem 1.5rem;
         /*
-        this property clones the properties to 
+        In order to fit the heading inside the card,
+        the span element had to be duplicated at compile
+        time.
+        We need to clone the properties so they are applied
+        to both spans.
+        This property clones the properties to 
         all of the boxes that have been created
         */
         -webkit-box-decoration-break: clone;

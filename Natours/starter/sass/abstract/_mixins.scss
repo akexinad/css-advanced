@@ -1,3 +1,8 @@
+/*
+When using float based layouts, childs elements lose their
+height property. To fix this we can create a clearFix mixin
+that fixes this small issue.
+*/
 @mixin clearFix {
     &::after {
         content: "";

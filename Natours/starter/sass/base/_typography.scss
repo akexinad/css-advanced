@@ -19,7 +19,7 @@ body {
      */
     backface-visibility: hidden;
     /* margin: 60px; */
-    margin: 6rem;
+    margin-bottom: 6rem;
 
     &--main {
         /* display is originally an inline element */
@@ -27,7 +27,7 @@ body {
         /* font-size: 60px; */
         font-size: 6rem;
         font-weight: 400;
-        letter-spacing: 3.4rem;
+        letter-spacing: 3.5rem;
     
         animation-name: moveInLeft;
         animation-duration: 1s;
@@ -45,7 +45,7 @@ body {
         font-size: 2rem;
         font-weight: 700;
         /* letter-spacing: 17.4px; */
-        letter-spacing: 1.8rem;
+        letter-spacing: 1.75rem;
     
         animation-name: moveInRight;
         animation-duration: 1s;
@@ -63,7 +63,7 @@ body {
     /*
     With a size so small there really is no need to use rem.
     */
-    letter-spacing: 2px;
+    letter-spacing: .2rem;
     transition: all .2s;
 
     &:hover {
