@@ -45,6 +45,8 @@
 }
 
 .section-stories {
+    position: relative;
     padding: 15rem 0;
-    background-color: $colour-grey-light;
+    overflow: hidden;
+    backface-visibility: hidden;
 }

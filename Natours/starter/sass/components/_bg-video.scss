@@ -1,0 +1,30 @@
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .15;
+
+    /*
+    always remember that when you have elemnts
+    that overflow their container you can just set
+    the overflow to hidden.
+    */
+    overflow: hidden;
+
+    &__content {
+        height: 100%;
+        width: 100%;
+        /*
+        this property will ensure that the child
+        element fills the parent whilst maintaining
+        its aspect ratio.
+
+        This is the equivalent of "cover" for html
+        elements.
+        */
+        object-fit: cover;
+    }
+}

@@ -488,7 +488,7 @@ pseudo classes represent special states of certain elements
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
@@ -502,7 +502,6 @@ pseudo classes represent special states of certain elements
     position: relative;
     width: 15rem;
     height: 15rem;
-    background-color: orangered;
     float: left;
     /*
         the height is relative to the element. Thus
@@ -556,6 +555,33 @@ pseudo classes represent special states of certain elements
   .story:hover .story__img {
     filter: blur(3px) brightness(80%);
     transform: translateX(-4rem) scale(1); }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  /*
+    always remember that when you have elemnts
+    that overflow their container you can just set
+    the overflow to hidden.
+    */
+  overflow: hidden; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    /*
+        this property will ensure that the child
+        element fills the parent whilst maintaining
+        its aspect ratio.
+
+        This is the equivalent of "cover" for html
+        elements.
+        */
+    object-fit: cover; }
 
 .header {
   position: relative;
@@ -705,5 +731,7 @@ pseudo classes represent special states of certain elements
   margin-top: -10rem; }
 
 .section-stories {
+  position: relative;
   padding: 15rem 0;
-  background-color: #eee; }
+  overflow: hidden;
+  backface-visibility: hidden; }
