@@ -1,0 +1,49 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($colour-black, .1);
+    background-color: $colour-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    /*
+    we give every other element the opposite skew so it looks
+    straight.
+    */
+    transform: skewX(-12deg);
+    
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        background-color: orangered;
+        float: left;
+        /*
+        the height is relative to the element. Thus
+        50% in this case the circle is 7.5 rem at 7.5rem
+        (horizontal center) and 7.5rem (vertical center)
+
+        This property will only work if you have explicited
+        both the element's width and height.
+        */
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        /*
+        to create spacing between floated elements, it's easier
+        to use the transform property.
+        */
+        transform: translateX(-3rem) skewX(12deg);;
+    }
+
+    &__img {
+        height: 100%;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+}
