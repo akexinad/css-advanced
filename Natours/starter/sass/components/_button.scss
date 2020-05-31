@@ -48,6 +48,15 @@ pseudo classes represent special states of certain elements
         }
     }
 
+    &--green {
+        background-color: $colour-primary;
+        color: $colour-white;
+
+        &::after {
+            background-color: $colour-white;
+        }
+    }
+
     /* 
     This is an example of a pseudo element
     A pseudo element allows us to style only certain parts of elements.
