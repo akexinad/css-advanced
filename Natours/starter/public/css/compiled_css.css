@@ -578,8 +578,8 @@ pseudo classes represent special states of certain elements
         element fills the parent whilst maintaining
         its aspect ratio.
 
-        This is the equivalent of "cover" for html
-        elements.
+        This is the equivalent of the background image's 
+        "cover" property for html elements.
         */
     object-fit: cover; }
 
@@ -735,3 +735,21 @@ pseudo classes represent special states of certain elements
   padding: 15rem 0;
   overflow: hidden;
   backface-visibility: hidden; }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+
+.book {
+  /*
+    Instead of using clip path, we can use this interesting
+    technique to create a colour gradient.
+    */
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url("../img/nat-10.jpg");
+  background-size: 100%;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  height: 50rem; }
+  .book__form {
+    width: 50%;
+    padding: 6rem; }
