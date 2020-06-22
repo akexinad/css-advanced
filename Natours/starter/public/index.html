@@ -380,6 +380,7 @@
                                         start booking now
                                     </h2>
                                 </div>
+
                                 <div class="form__group">
                                     <input
                                         type="text"
@@ -392,6 +393,7 @@
                                         >Full Name</label
                                     >
                                 </div>
+
                                 <div class="form__group">
                                     <input
                                         type="email"
@@ -403,6 +405,52 @@
                                     <label for="email" class="form__label"
                                         >Email Address</label
                                     >
+                                </div>
+
+                                <div class="form__group u-margin-bottom-medium">
+                                    <div class="form__radio-group">
+                                        <!-- 
+                                            only 1 radio input of the same name can be selected
+                                        -->
+                                        <input
+                                            type="radio"
+                                            class="form__radio-input"
+                                            id="small"
+                                            name="size"
+                                        />
+                                        <label
+                                            for="small"
+                                            class="form__radio-label"
+                                        >
+                                            <span class="form__radio-button"></span>
+                                            small tour group
+                                        </label>
+                                    </div>
+
+                                    <div class="form__radio-group">
+                                        <input
+                                            type="radio"
+                                            class="form__radio-input"
+                                            id="large"
+                                            name="size"
+                                        />
+                                        <!-- 
+                                            the trick here is to style the radio input is to hide 
+                                            the actual input and style the span in the label
+                                            element.
+                                        -->
+                                        <label
+                                            for="large"
+                                            class="form__radio-label"
+                                        >
+                                            <span class="form__radio-button"></span>
+                                            large tour group
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form__group">
+                                    <button class="btn btn--green">next step &rarr;</button>
                                 </div>
                             </form>
                         </div>

@@ -171,35 +171,40 @@ this utililty can now be reused to center our texts
 when we need to.
 */
 .u-center-text {
-  text-align: center; }
+  text-align: center !important; }
 
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem; }
+  margin-bottom: 8rem !important; }
 
 .u-margin-top-big {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
 
 .u-margin-top-huge {
-  margin-top: 10rem; }
+  margin-top: 10rem !important; }
 
 /*
 this is an example of a pseudo-class
 pseudo classes represent special states of certain elements
 */
 .btn {
+  /*
+    just by adding '&,' will ensure that these properties will get
+    attached to buttons that are not anchor tags and do not have the
+    link or visited pseudo classes
+    */
   /* 
     This is an example of a pseudo element
     A pseudo element allows us to style only certain parts of elements.
     The after pseudo element allows to style the element after an event.
     You can think of it a virtual element that hides behind the actual element.
     */ }
-  .btn:link, .btn:visited {
+  .btn, .btn:link, .btn:visited {
     font-size: 1.6rem;
     text-transform: uppercase;
     text-decoration: none;
@@ -214,7 +219,12 @@ pseudo classes represent special states of certain elements
     /* border-radius: 100px; */
     border-radius: 10rem;
     transition: all .2s;
-    position: relative; }
+    position: relative;
+    /*
+        change for the button element
+        */
+    border: none;
+    cursor: pointer; }
   .btn:hover {
     transform: translateY(-3px);
     /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
@@ -222,7 +232,8 @@ pseudo classes represent special states of certain elements
     .btn:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0; }
-  .btn:active {
+  .btn:active, .btn:focus {
+    outline: none;
     transform: translateY(-1px);
     /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
@@ -590,9 +601,12 @@ pseudo classes represent special states of certain elements
     elements when this event happens
     NB. the order matters. i.e. label must come after input
     in the html as it is below. 
+    */
+  /*
+    When the radio input is clicked, it recieves the 'checked'
+    pseudo-class. Again, we need to select the child of the sibling when the radio
+    input has been selected, and we can do this with the approx. symbol.
     */ }
-  .form__group:not(:last-child) {
-    margin-bottom: 2rem; }
   .form__input {
     font-size: 1.5rem;
     font-family: inherit;
@@ -608,7 +622,8 @@ pseudo classes represent special states of certain elements
         */
     border-bottom: 3px solid transparent;
     width: 90%;
-    display: block; }
+    display: block;
+    transition: all .3s; }
     .form__input:focus {
       /*
             this is the line around the 
@@ -632,6 +647,41 @@ pseudo classes represent special states of certain elements
     opacity: 0;
     visibility: hidden;
     transform: translateY(-4rem); }
+  .form__radio-group {
+    width: 49%;
+    display: inline-block; }
+  .form__radio-input {
+    display: none; }
+  .form__radio-label {
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding-left: 5rem;
+    position: relative; }
+  .form__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid #55c57a;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -.4rem; }
+    .form__radio-button::after {
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #55c57a;
+      opacity: 0;
+      transition: .2s; }
+  .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+    opacity: 1; }
 
 .header {
   position: relative;

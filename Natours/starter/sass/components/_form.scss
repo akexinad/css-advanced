@@ -1,8 +1,4 @@
 .form {
-    &__group:not(:last-child) {
-        margin-bottom: 2rem;
-    }
-    
     &__input {
         font-size: 1.5rem;
         font-family: inherit;
@@ -20,6 +16,8 @@
         border-bottom: 3px solid transparent;
         width: 90%;
         display: block;
+
+        transition: all .3s;
 
         &:focus {
             /*
@@ -59,5 +57,59 @@
         opacity: 0;
         visibility: hidden;
         transform: translateY(-4rem);
+    }
+
+    &__radio-group {
+        width: 49%;
+        display: inline-block;
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        text-transform: capitalize;
+        font-size: $default-font-size;
+        cursor: pointer;
+        padding-left: 5rem;
+
+        position: relative;
+    }
+
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $colour-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $colour-primary;
+            opacity: 0;
+            transition: .2s;
+        }
+    }
+
+    /*
+    When the radio input is clicked, it recieves the 'checked'
+    pseudo-class. Again, we need to select the child of the sibling when the radio
+    input has been selected, and we can do this with the approx. symbol.
+    */
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {
+        opacity: 1;
+        
     }
 }
